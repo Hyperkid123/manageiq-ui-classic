@@ -16,18 +16,16 @@ describe('widget-empty', () => {
   }));
 
   it('is rendered in widget-wrapper if widget-blank is set to true', (done) => {
-    element = angular.element(
-      '<form name="angularForm">' +
+    element = angular.element('<form name="angularForm">' +
       '<widget-wrapper widget-id="42" widget-blank=true widget-buttons="null"></widget-wrapper>' +
-      '</form>'
-    );
+      '</form>');
     element = $compile(element)($scope);
 
     $scope.$digest();
 
     setTimeout(() => {
-      const widget = element.find("widget-empty");
-      expect(widget.length).toBe(1);
+      const widget = element.find('widget-empty');
+      expect(widget).toHaveLength(1);
 
       done();
     });
