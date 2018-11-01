@@ -57,10 +57,10 @@ ManageIQ.qe.setAngularJsValue = function(el, value) {
 ManageIQ.qe.anythingInFlight = function() {
   var state = ManageIQ.qe.inFlight();
 
-  return (state.autofocus != 0) ||
+  return (state.autofocus !== 0) ||
     (state.debounce) ||
-    (state.document != 'complete') ||
-    (state.jquery != 0) ||
+    (state.document !== 'complete') ||
+    (state.jquery !== 0) ||
     (state.spinner);
 };
 
@@ -112,7 +112,7 @@ ManageIQ.qe.gtl = {
       }
       if (foundItem.length === 0) {
         foundItem = rows.filter(function(oneRow) {
-          return oneRow.id == identificator || oneRow.long_id == identificator;
+          return oneRow.id === identificator || oneRow.long_id === identificator;
         });
       }
       return multiple ? foundItem : foundItem[0];

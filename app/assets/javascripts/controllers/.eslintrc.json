@@ -17,7 +17,7 @@
     "angular/on-destroy": 1,
 
     // only warnings for now
-    "angular/module-getter": 1,
+    "angular/module-getter": 0,
     "angular/no-services": [ "warn", ["$http"] ],
 
     // prefer lodash for typechecks

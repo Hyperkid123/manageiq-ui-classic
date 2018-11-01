@@ -34,7 +34,7 @@ ManageIQ.angular.app.controller('scheduleFormController', ['$http', '$scope', 's
 
     ManageIQ.angular.scope = $scope;
 
-    if (scheduleFormId == 'new') {
+    if (scheduleFormId === 'new') {
       $scope.newRecord                = true;
       $scope.scheduleModel.action_typ = 'vm';
       $scope.scheduleModel.filter_typ = 'all';
@@ -67,7 +67,7 @@ ManageIQ.angular.app.controller('scheduleFormController', ['$http', '$scope', 's
       $scope.scheduleModel.log_userid   = data.log_userid;
       $scope.scheduleModel.log_protocol = data.protocol;
       $scope.scheduleModel.description  = data.schedule_description;
-      $scope.scheduleModel.enabled      = data.schedule_enabled == 1 ? true : false;
+      $scope.scheduleModel.enabled      = data.schedule_enabled === 1 ? true : false;
       $scope.scheduleModel.name         = data.schedule_name;
       $scope.scheduleModel.timer_typ    = data.schedule_timer_type;
       $scope.scheduleModel.timer_value  = data.schedule_timer_value;
@@ -277,7 +277,7 @@ ManageIQ.angular.app.controller('scheduleFormController', ['$http', '$scope', 's
   };
 
   $scope.filterTypeChanged = function() {
-    if ($scope.scheduleModel.filter_typ != 'all') {
+    if ($scope.scheduleModel.filter_typ !== 'all') {
       miqService.sparkleOn();
       $http.post('/ops/schedule_form_filter_type_field_changed/' + scheduleFormId,
         {filter_type: $scope.scheduleModel.filter_typ,
@@ -353,7 +353,7 @@ ManageIQ.angular.app.controller('scheduleFormController', ['$http', '$scope', 's
       $scope.filterValuesEmpty = true;
     }
 
-    var filter_touched = $scope.angularForm.action_typ.$touched || (typeof $scope.angularForm.filter_typ != 'undefined' && $scope.angularForm.filter_typ.$touched);
+    var filter_touched = $scope.angularForm.action_typ.$touched || (typeof $scope.angularForm.filter_typ !== 'undefined' && $scope.angularForm.filter_typ.$touched);
     if (! $scope.dbBackup() && ! $scope.automateRequest() && $scope.scheduleModel.filter_typ && ! filter_touched) {
       // AJAX-less Reset
       $scope.toggleValueForWatch('filterValuesEmpty', false);
@@ -421,13 +421,13 @@ ManageIQ.angular.app.controller('scheduleFormController', ['$http', '$scope', 's
   };
 
   $scope.setTimerType = function() {
-    $scope.timerTypeOnce = $scope.scheduleModel.timer_typ == 'Once';
+    $scope.timerTypeOnce = $scope.scheduleModel.timer_typ === 'Once';
   };
 
   $scope.toggleValueForWatch = function(watchValue, initialValue) {
-    if ($scope[watchValue] == initialValue) {
+    if ($scope[watchValue] === initialValue) {
       $scope[watchValue] = 'NO-OP';
-    } else if ($scope[watchValue] == 'NO-OP') {
+    } else if ($scope[watchValue] === 'NO-OP') {
       $scope[watchValue] = initialValue;
     }
   };

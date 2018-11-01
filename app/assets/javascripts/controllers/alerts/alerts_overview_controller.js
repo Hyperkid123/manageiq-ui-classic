@@ -117,7 +117,7 @@ angular.module('alertsCenter').controller('alertsOverviewController',
               return true;
             }
           });
-          filtered = filter != undefined;
+          filtered = filter !== undefined;
         }
         return filtered;
       }
