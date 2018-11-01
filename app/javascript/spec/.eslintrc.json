@@ -2,5 +2,11 @@
   "rules": {
     "max-lines": "off",
     "max-lines-per-function": "off"
+  },
+  "globals": {
+    "spyOn": true    
+  },
+  "env": {
+    "jest": true
   }
 }
