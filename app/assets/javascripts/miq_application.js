@@ -496,7 +496,7 @@ function miqBuildChartMenu(col, row, _value, category, series, id, _message) {
   }
 }
 
-function miqChartBindEvents(chart_set, chart_index) {
+function miqChartBindEvents() {
   if (ManageIQ.charts.provider === 'c3') {
     // noop
   }
@@ -1201,7 +1201,7 @@ function miqInitCodemirror(options) {
     viewportMargin: Infinity,
   });
 
-  ManageIQ.editor.on('change', function(cm, change) {
+  ManageIQ.editor.on('change', function() {
     if (options.angular) {
       ManageIQ.editor.save();
       $(textarea).trigger('change');
@@ -1210,7 +1210,7 @@ function miqInitCodemirror(options) {
     }
   });
 
-  ManageIQ.editor.on('blur', function(cm, change) {
+  ManageIQ.editor.on('blur', function() {
     ManageIQ.editor.save();
   });
 
